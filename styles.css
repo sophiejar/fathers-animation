@@ -24,6 +24,7 @@ body {
     transform-style: preserve-3d;
     transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    transform: rotateX(0);
 }
 
 .envelope:hover {
@@ -68,6 +69,12 @@ body {
     backface-visibility: hidden;
     border-radius: 3px;
     overflow: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.envelope.open .envelope-content {
+    opacity: 1;
 }
 
 .letter {
