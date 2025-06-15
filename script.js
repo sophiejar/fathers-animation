@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const envelope = document.getElementById('envelope');
+    const letter = document.getElementById('letter');
     const musicToggle = document.getElementById('musicToggle');
     const backgroundMusic = document.getElementById('backgroundMusic');
     let isMusicPlaying = false;
@@ -18,6 +19,12 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => {
             envelope.classList.toggle('open');
             envelope.classList.remove('opening');
+            
+            // If we're closing the envelope, reset the letter position
+            if (!envelope.classList.contains('open')) {
+                letter.style.transform = 'translateY(200%)';
+                letter.style.opacity = '0';
+            }
         }, 300);
     });
 
