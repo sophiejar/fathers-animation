@@ -10,21 +10,29 @@ body {
 
 .container {
     perspective: 1000px;
+    padding: 20px;
 }
 
 .envelope {
     position: relative;
     width: 300px;
     height: 200px;
-    background-color: #f8f8f8;
+    background: linear-gradient(45deg, #f8f8f8, #e8e8e8);
     border: 2px solid #333;
+    border-radius: 5px;
     cursor: pointer;
     transform-style: preserve-3d;
-    transition: transform 0.6s;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.envelope:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.3);
 }
 
 .envelope.open {
-    transform: rotateX(180deg);
+    transform: rotateX(180deg) translateY(-5px);
 }
 
 .envelope-flap {
@@ -37,7 +45,8 @@ body {
     border-right: 150px solid transparent;
     border-bottom: 100px solid #e0e0e0;
     transform-origin: bottom;
-    transition: transform 0.6s;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
 }
 
 .envelope.open .envelope-flap {
@@ -48,9 +57,10 @@ body {
     position: absolute;
     width: 100%;
     height: 100%;
-    background-color: #fff;
+    background: linear-gradient(45deg, #fff, #f8f8f8);
     transform: rotateX(180deg);
     backface-visibility: hidden;
+    border-radius: 3px;
 }
 
 .letter {
@@ -60,9 +70,10 @@ body {
     background-color: #fff;
     margin: 5%;
     padding: 20px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
     transform: translateY(100%);
-    transition: transform 0.6s;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 3px;
 }
 
 .envelope.open .letter {
@@ -72,13 +83,56 @@ body {
 .letter-content {
     color: #333;
     line-height: 1.6;
+    font-size: 16px;
 }
 
 .letter-content h2 {
     margin-top: 0;
     color: #2c3e50;
+    font-size: 24px;
+    margin-bottom: 20px;
 }
 
 .letter-content p {
-    margin: 10px 0;
+    margin: 15px 0;
+}
+
+/* Music player styles */
+.music-player {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 10px 20px;
+    border-radius: 25px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 1000;
+}
+
+.music-player button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+    color: #2c3e50;
+    padding: 5px;
+    transition: transform 0.2s;
+}
+
+.music-player button:hover {
+    transform: scale(1.1);
+}
+
+/* Add a subtle pulse animation to the envelope when it's closed */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+    100% { transform: scale(1); }
+}
+
+.envelope:not(.open) {
+    animation: pulse 2s infinite;
 } 
