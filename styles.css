@@ -478,6 +478,11 @@ body:after {
 @media screen and (max-width: 768px) {
     .cloud {
         transform: scale(0.7);
+        z-index: 1;
+    }
+    
+    .fathers-day {
+        z-index: 2;
     }
     
     .cloud:nth-child(1) {
@@ -524,6 +529,11 @@ body:after {
 @media screen and (max-width: 480px) {
     .cloud {
         transform: scale(0.5);
+        z-index: 1;
+    }
+    
+    .fathers-day {
+        z-index: 2;
     }
     
     .cloud:nth-child(1) {
