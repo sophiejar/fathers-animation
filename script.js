@@ -6,12 +6,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Handle envelope click
     envelope.addEventListener('click', () => {
-        envelope.classList.toggle('open');
+        // Add a class to trigger the animation
+        envelope.classList.add('opening');
         
         // Play a subtle sound when opening/closing the envelope
         const envelopeSound = new Audio('https://www.soundjay.com/buttons/sounds/button-09.mp3');
         envelopeSound.volume = 0.3;
         envelopeSound.play();
+
+        // Toggle the open state after a small delay
+        setTimeout(() => {
+            envelope.classList.toggle('open');
+            envelope.classList.remove('opening');
+        }, 300);
     });
 
     // Handle music toggle
