@@ -3,13 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Envelope</title>
+    <title>Father's Day Card</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <div class="cloud cloud-1"></div>
+    <div class="cloud cloud-2"></div>
+    <div class="cloud cloud-3"></div>
+    <div class="cloud cloud-4"></div>
+    <div class="cloud cloud-5"></div>
+    <div class="cloud cloud-6"></div>
+    <div class="sun"></div>
+    <div class="text">Happy Father's Day!</div>
     <div class="envelope">
-        <div class="envelope-flap"></div>
-        <div class="envelope-body"></div>
+        <div class="flap"></div>
+        <div class="seal"></div>
     </div>
+    <div class="note">
+        <p>Happy Father's Day! I appreciate all that you do and I love you so much. The sacrifices you make don't go unnoticed. Thank you for everything, I love you.</p>
+        <p>You're the best dad ever!</p>
+        <p>Love, Sophie</p>
+    </div>
+    <div class="flower flower-1"></div>
+    <div class="flower flower-2"></div>
+    <div class="flower flower-3"></div>
+    <div class="flower flower-4"></div>
+    <div class="flower flower-5"></div>
+    <script>
+        document.querySelector('.envelope').addEventListener('click', function() {
+            this.classList.add('open');
+        });
+    </script>
+    <script src="script.js"></script>
 </body>
 </html>
