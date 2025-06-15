@@ -3,10 +3,29 @@ document.addEventListener('DOMContentLoaded', () => {
     const letter = document.getElementById('letter');
     const musicToggle = document.getElementById('musicToggle');
     const backgroundMusic = document.getElementById('backgroundMusic');
-    let isMusicPlaying = false;
+    let isMusicPlaying = true; // Start as true since we'll play automatically
 
-    // Set initial volume
-    backgroundMusic.volume = 0.3;
+    // Set initial volume and start playing
+    backgroundMusic.volume = 0;
+    backgroundMusic.play().then(() => {
+        // Fade in the music
+        let volume = 0;
+        const fadeIn = setInterval(() => {
+            if (volume < 0.3) {
+                volume += 0.01;
+                backgroundMusic.volume = volume;
+            } else {
+                clearInterval(fadeIn);
+            }
+        }, 50);
+    }).catch(error => {
+        console.log("Autoplay prevented:", error);
+        isMusicPlaying = false;
+        musicToggle.innerHTML = '<i class="fas fa-music"></i>';
+    });
+
+    // Update music icon to show it's playing
+    musicToggle.innerHTML = '<i class="fas fa-volume-up"></i>';
 
     // Ensure envelope starts closed
     envelope.classList.remove('open');
