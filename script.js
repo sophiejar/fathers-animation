@@ -5,6 +5,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const backgroundMusic = document.getElementById('backgroundMusic');
     let isMusicPlaying = false;
 
+    // Set initial volume
+    backgroundMusic.volume = 0.3;
+
     // Ensure envelope starts closed
     envelope.classList.remove('open');
     letter.style.transform = 'translateY(200%)';
